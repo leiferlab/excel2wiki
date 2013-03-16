@@ -32,11 +32,12 @@ echo "<html>
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 echo "<small><b>Instructions:</b><br><br>
 1. Copy & paste cells from Excel and click submit. Paste results into wikipedia or similar wiki.<br><br>
-2. Output assumes {{table}} template exists, e.g.:<br> &nbsp;&nbsp;&nbsp;<i>border=\"1\" cellpadding=\"4\" cellspacing=\"0\" style=\"border:\#c9c9c9 1px solid; margin: 1em 1em 1em 0; border-collapse: collapse;\"</i><br><br>
-3. Here is an example <a style='text-decoration:none; color:blue;' href=\"http://openwetware.org/wiki/User:ShawnDouglas\">table</a> and <a style='text-decoration:none; color:blue;' href=\"http://openwetware.org/wiki/Template:Table\">template</a>.<br><br>
-You can also download the <a style='text-decoration:none; color:blue;' href=\"https://github.com/sdouglas/excel2wiki\">source code</a> or contact <a style='text-decoration:none; color:blue;' href='http://shawndouglas.com/'>me</a> via my gmail account: shawn.douglas)</small>";
+2. If \"format header\" is checked, a sortable table with headers is created (assumes Mediawiki 1.19 or later).
+<small><b>Notes:</b><br><br>
+&bull; You can also download the <a style='text-decoration:none; color:blue;' href=\"https://github.com/sdouglas/excel2wiki\">source code</a> or contact <a style='text-decoration:none; color:blue;' href='http://shawndouglas.com/'>me</a>.
+&bull; Modified by Andrew Leifer to support sortable tables. <a href='https://github.com/leiferlab/excel2wiki/'>source</a>.
 } else {
-echo "<h2>result</h2>\n<pre>\n{| {{table}}\n";
+echo "<h2>result</h2>\n<pre>\n{| class=\"wikitable sortable\"\n";
 $lines = preg_split("/\n/", $_POST['data']);
 $n = sizeof($lines);
 foreach ($lines as $index => $value) {
@@ -44,7 +45,7 @@ foreach ($lines as $index => $value) {
  if ($index == 0 && isset($_POST['header'])) {
   foreach ($line as $val) {
    $val2 = rtrim($val);
-   echo '| align="center" style="background:#f0f0f0;"|\'\'\'' . $val2 . '\'\'\'' . "\n";
+   echo '! \'\'\'' . $val2 . '\'\'\'' . "\n";
   }
   echo "|-\n";
  } else {
