@@ -34,7 +34,7 @@ echo "<small><b>Instructions:</b><br><br>
 1. Copy & paste cells from Excel and click submit. Paste results into wikipedia or similar wiki. Note this also works the other way. You can copy from a wiki into excel.<br><br>
 2. This makes tables of class "wikitable sortable"  If you check the "format header" box this will give you sortable tables compatable with MediaWiki 1.19 or higher.
 
-You can also download the <a style='text-decoration:none; color:blue;' href=\"https://github.com/sdouglas/excel2wiki\">source code</a> or contact <a style='text-decoration:none; color:blue;' href='http://shawndouglas.com/'>me</a>.<br>Modified by <a href="mailto:leifer@princeton.edu">Andrew Leifer</a> to do sortable tables.<small>";
+You can also download the <a style='text-decoration:none; color:blue;' href=\"https://github.com/sdouglas/excel2wiki\">source code</a> or contact <a style='text-decoration:none; color:blue;' href='http://shawndouglas.com/'>me</a>.<br>Modified by <a href='http://leiferlab.princeton.edu'>Andrew Leifer</a> to do sortable tables.<small>";
 
 } else {
 echo "<h2>result</h2>\n<pre>\n".'{| class="wikitable sortable" '. "\n";
